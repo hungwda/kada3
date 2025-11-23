@@ -31,14 +31,14 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     setupFiles: ['./src/test-setup.ts'],
+    include: ['tests/**/*.test.ts', 'tests/**/*.test.tsx'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       exclude: [
         'node_modules/',
+        'tests/',
         'src/test-setup.ts',
-        '**/*.test.ts',
-        '**/*.test.tsx',
         'src/games/**',
         'src/sw/**'
       ]

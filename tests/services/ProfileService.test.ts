@@ -3,11 +3,11 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { ProfileService } from './ProfileService';
-import { getRepository } from './storage/orm';
-import { Profile } from '../db/entities/Profile';
+import { ProfileService } from '../../src/services/ProfileService';
+import { getRepository } from '../../src/services/storage/orm';
+import { Profile } from '../../src/db/entities/Profile';
 
-vi.mock('./storage/orm');
+vi.mock('../../src/services/storage/orm');
 vi.mock('uuid', () => ({
   v4: () => 'test-uuid-123'
 }));

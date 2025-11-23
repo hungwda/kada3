@@ -4,10 +4,10 @@
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { render, fireEvent, waitFor, screen } from '@testing-library/preact';
-import { Profiles } from './Profiles';
-import { ProfileService } from '../services/ProfileService';
+import { Profiles } from '../../src/pages/Profiles';
+import { ProfileService } from '../../src/services/ProfileService';
 
-vi.mock('../services/ProfileService');
+vi.mock('../../src/services/ProfileService');
 
 describe('Profiles Page', () => {
   const mockOnNavigate = vi.fn();
