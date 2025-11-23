@@ -3,8 +3,26 @@ import preact from '@preact/preset-vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  esbuild: {
+    // Enable support for decorators (needed for TypeORM)
+    target: 'es2020',
+    tsconfigRaw: {
+      compilerOptions: {
+        experimentalDecorators: true,
+        emitDecoratorMetadata: true
+      }
+    }
+  },
   plugins: [
-    preact(),
+    preact({
+      // Enable decorator support in Babel
+      babel: {
+        plugins: [
+          ['@babel/plugin-proposal-decorators', { legacy: true }],
+          ['@babel/plugin-proposal-class-properties', { loose: true }]
+        ]
+      }
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
