@@ -3,7 +3,7 @@
  */
 
 import { get, set } from 'idb-keyval';
-import { exportDatabase } from './db';
+import { getDataSource } from './orm';
 
 const DB_KEY = 'sqljs-db';
 
@@ -12,9 +12,14 @@ const DB_KEY = 'sqljs-db';
  */
 export async function saveDatabaseToIndexedDB(): Promise<void> {
   try {
-    const data = exportDatabase();
-    await set(DB_KEY, data);
-    console.log('Database saved to IndexedDB');
+    const dataSource = await getDataSource();
+    // Access the sql.js database through the driver
+    const driver = dataSource.driver as any;
+    if (driver.databaseConnection) {
+      const data = driver.databaseConnection.export();
+      await set(DB_KEY, data);
+      console.log('Database saved to IndexedDB');
+    }
   } catch (error) {
     console.error('Failed to save database to IndexedDB:', error);
     throw error;
