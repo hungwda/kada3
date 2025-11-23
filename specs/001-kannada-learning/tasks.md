@@ -28,21 +28,21 @@ description: "Task list for Kannada Learning PWA (Preact + Phaser + sql.js/TypeO
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create directory structure per plan in repository root (src/, pages, services, games, db, sw, lib, public) in src/ and public/
-- [ ] T002 Initialize Vite Preact TypeScript project (record command in specs/001-kannada-learning/quickstart.md)
-- [ ] T003 Add tsconfig.json flags for Preact + decorators (project root: tsconfig.json)
-- [ ] T004 Add ESLint + Prettier base config (project root: .eslintrc.cjs, .prettierrc)
-- [ ] T005 Add PWA manifest (public/manifest.webmanifest)
-- [ ] T006 Add app icons placeholders (public/icons/icon-192.png, public/icons/icon-512.png)
-- [ ] T007 Add service worker entry and registration (src/sw/service-worker.ts, src/main.tsx)
-- [ ] T008 Create app shell with Preact (src/components/App.tsx, src/main.tsx)
-- [ ] T009 Create pages scaffolds (src/pages/Home.tsx, src/pages/Lessons.tsx, src/pages/Games.tsx, src/pages/Profiles.tsx)
-- [ ] T010 Create services scaffolds (src/services/audio.ts, src/services/offline.ts, src/services/cache.ts)
-- [ ] T011 Create storage scaffolds (src/services/storage/db.ts, src/services/storage/orm.ts, src/services/storage/persist.ts)
-- [ ] T012 Create db entities directory (src/db/entities/.keep)
-- [ ] T013 Create games directory scaffolds (src/games/match-sound/.keep, src/games/tap-letter/.keep)
-- [ ] T014 Add minimal global styles for mobile-first and accessibility (src/styles/global.css)
-- [ ] T015 Add README quickstart section referencing specs (README.md)
+- [X] T001 Create directory structure per plan in repository root (src/, pages, services, games, db, sw, lib, public) in src/ and public/
+- [X] T002 Initialize Vite Preact TypeScript project (record command in specs/001-kannada-learning/quickstart.md)
+- [X] T003 Add tsconfig.json flags for Preact + decorators (project root: tsconfig.json)
+- [X] T004 Add ESLint + Prettier base config (project root: .eslintrc.cjs, .prettierrc)
+- [X] T005 Add PWA manifest (public/manifest.webmanifest)
+- [X] T006 Add app icons placeholders (public/icons/icon-192.png, public/icons/icon-512.png)
+- [X] T007 Add service worker entry and registration (src/sw/service-worker.ts, src/main.tsx)
+- [X] T008 Create app shell with Preact (src/components/App.tsx, src/main.tsx)
+- [X] T009 Create pages scaffolds (src/pages/Home.tsx, src/pages/Lessons.tsx, src/pages/Games.tsx, src/pages/Profiles.tsx)
+- [X] T010 Create services scaffolds (src/services/audio.ts, src/services/offline.ts, src/services/cache.ts)
+- [X] T011 Create storage scaffolds (src/services/storage/db.ts, src/services/storage/orm.ts, src/services/storage/persist.ts)
+- [X] T012 Create db entities directory (src/db/entities/.keep)
+- [X] T013 Create games directory scaffolds (src/games/match-sound/.keep, src/games/tap-letter/.keep)
+- [X] T014 Add minimal global styles for mobile-first and accessibility (src/styles/global.css)
+- [X] T015 Add README quickstart section referencing specs (README.md)
 
 ---
 
@@ -52,18 +52,18 @@ description: "Task list for Kannada Learning PWA (Preact + Phaser + sql.js/TypeO
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T016 Implement service worker: precache app shell + runtime cache for assets (src/sw/service-worker.ts)
-- [ ] T017 Register service worker on load (src/main.tsx)
-- [ ] T018 Implement app routing/state to navigate Home ↔ Lessons ↔ Games ↔ Profiles (src/components/App.tsx)
-- [ ] T019 Implement lazy-loading boundaries (dynamic imports) for Lessons/Games/Profiles pages (src/pages/*.tsx)
-- [ ] T020 Implement sql.js loader with locateFile for WASM (src/services/storage/db.ts)
-- [ ] T021 Implement TypeORM datasource bootstrap (lazy) (src/services/storage/orm.ts)
-- [ ] T022 Implement IndexedDB persistence APIs (save/load) (src/services/storage/persist.ts)
-- [ ] T023 Implement audio utilities with offline-safe playback (src/services/audio.ts)
-- [ ] T024 Implement cache helpers for asset versioning (src/services/cache.ts)
-- [ ] T025 Define TypeORM entities per data-model.md (src/db/entities/*.ts)
-- [ ] T026 Seed initial content pack for Kannada letters (vowels/consonants) (public/data/lessons/letters.json)
-- [ ] T027 Add accessibility base: AA palette, ≥16px font, 44×44 targets (src/styles/global.css)
+- [X] T016 Implement service worker: precache app shell + runtime cache for assets (src/sw/service-worker.ts)
+- [X] T017 Register service worker on load (src/main.tsx)
+- [X] T018 Implement app routing/state to navigate Home ↔ Lessons ↔ Games ↔ Profiles (src/components/App.tsx)
+- [X] T019 Implement lazy-loading boundaries (dynamic imports) for Lessons/Games/Profiles pages (src/pages/*.tsx)
+- [X] T020 Implement sql.js loader with locateFile for WASM (src/services/storage/db.ts)
+- [X] T021 Implement TypeORM datasource bootstrap (lazy) (src/services/storage/orm.ts)
+- [X] T022 Implement IndexedDB persistence APIs (save/load) (src/services/storage/persist.ts)
+- [X] T023 Implement audio utilities with offline-safe playback (src/services/audio.ts)
+- [X] T024 Implement cache helpers for asset versioning (src/services/cache.ts)
+- [X] T025 Define TypeORM entities per data-model.md (src/db/entities/*.ts)
+- [X] T026 Seed initial content pack for Kannada letters (vowels/consonants) (public/data/lessons/letters.json)
+- [X] T027 Add accessibility base: AA palette, ≥16px font, 44×44 targets (src/styles/global.css)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
