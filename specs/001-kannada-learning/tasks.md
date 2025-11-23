@@ -77,15 +77,15 @@ description: "Task list for Kannada Learning PWA (Preact + Phaser + sql.js/TypeO
 
 ### Implementation for User Story 1
 
-- [ ] T028 [US1] Build Home page with clear primary actions (Start Lesson, Play Game) (src/pages/Home.tsx)
-- [ ] T029 [P] [US1] Implement Lessons list view (reads letters.json; simple tiles) (src/pages/Lessons.tsx)
-- [ ] T030 [P] [US1] Implement Lesson view for a single letter (offline assets; audio playback) (src/pages/Lessons.tsx)
-- [ ] T031 [P] [US1] Load lesson assets via cache helpers; ensure SW runtime caching (src/services/cache.ts)
-- [ ] T032 [US1] Write repository method to record lesson completion (local DB) (src/services/storage/orm.ts)
-- [ ] T033 [US1] Persist completion on lesson end (src/pages/Lessons.tsx)
-- [ ] T034 [US1] Display local progress indicators on Lessons list (completed/starred) (src/pages/Lessons.tsx)
-- [ ] T035 [US1] Add simple feedback/animation on completion (src/pages/Lessons.tsx)
-- [ ] T036 [US1] Verify offline flow guards and friendly messages (src/services/offline.ts)
+- [X] T028 [US1] Build Home page with clear primary actions (Start Lesson, Play Game) (src/pages/Home.tsx)
+- [X] T029 [P] [US1] Implement Lessons list view (reads letters.json; simple tiles) (src/pages/Lessons.tsx)
+- [X] T030 [P] [US1] Implement Lesson view for a single letter (offline assets; audio playback) (src/pages/Lessons.tsx)
+- [X] T031 [P] [US1] Load lesson assets via cache helpers; ensure SW runtime caching (src/services/cache.ts)
+- [X] T032 [US1] Write repository method to record lesson completion (local DB) (src/services/storage/orm.ts)
+- [X] T033 [US1] Persist completion on lesson end (src/pages/Lessons.tsx)
+- [X] T034 [US1] Display local progress indicators on Lessons list (completed/starred) (src/pages/Lessons.tsx)
+- [X] T035 [US1] Add simple feedback/animation on completion (src/pages/Lessons.tsx)
+- [X] T036 [US1] Verify offline flow guards and friendly messages (src/services/offline.ts)
 
 **Checkpoint**: User Story 1 fully functional and testable offline
 

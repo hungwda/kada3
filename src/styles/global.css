@@ -266,3 +266,216 @@ p {
     --color-border: #444444;
   }
 }
+
+/* Home page styles */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.home-header {
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+.home-header p {
+  color: var(--color-text-light);
+  margin-top: var(--spacing-sm);
+}
+
+.primary-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-md);
+}
+
+.stats-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-md);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Lessons page styles */
+.lessons-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.lessons-list {
+  padding: 0 var(--spacing-md);
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.lesson-card {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: var(--tap-target-min);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.lesson-card:hover,
+.lesson-card:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.lesson-card.completed {
+  background-color: #f0f9ff;
+  border-color: var(--color-success);
+}
+
+.lesson-letter {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lesson-title {
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+.lesson-stars {
+  font-size: 12px;
+  margin-top: var(--spacing-xs);
+}
+
+/* Lesson detail view */
+.lesson-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.letter-display {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1;
+  background-color: var(--color-surface);
+  border: 3px solid var(--color-primary);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.kannada-letter {
+  font-size: 120px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.lesson-info {
+  text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  width: 100%;
+  max-width: 400px;
+}
+
+.completion-badge {
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--color-success);
+  color: white;
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+}
+
+/* Games page styles */
+.games-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.games-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-md);
+}
+
+.game-card {
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.game-card h2 {
+  color: var(--color-primary);
+}
+
+.play-button {
+  margin-top: var(--spacing-md);
+  min-width: 200px;
+}
+
+/* Profiles page styles */
+.profiles-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.profiles-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+/* Loading states */
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--color-text-light);
+  font-style: italic;
+}
