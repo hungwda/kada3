@@ -20,8 +20,8 @@ export async function initDatabase(): Promise<Database> {
     if (!sqlJs) {
       sqlJs = await initSqlJs({
         locateFile: (file: string) => {
-          // Vite will handle the WASM file location
-          return `/node_modules/sql.js/dist/${file}`;
+          // WASM files are copied to public/sql-wasm directory
+          return `/sql-wasm/${file}`;
         }
       });
     }

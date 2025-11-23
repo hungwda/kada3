@@ -11,7 +11,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "test": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "postinstall": "mkdir -p public/sql-wasm && cp node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm/ && cp node_modules/sql.js/dist/sql-wasm.js public/sql-wasm/"
   },
   "dependencies": {
     "preact": "^10.19.3",
