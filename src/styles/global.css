@@ -561,3 +561,508 @@ p {
   font-size: var(--font-size-base);
   margin-top: var(--spacing-sm);
 }
+
+/* Letter Tracing Game */
+.letter-tracing-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.letter-tracing-game .game-header {
+  text-align: center;
+  width: 100%;
+}
+
+.letter-tracing-game .game-header h2 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tracing-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.letter-display {
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--color-primary);
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+}
+
+#tracing-canvas {
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: white;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.trace-progress-bar {
+  width: 300px;
+  height: 20px;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.trace-progress-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.tracing-controls {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.clear-btn,
+.next-btn {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  min-width: 100px;
+}
+
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Bubble Pop Game */
+.bubble-pop-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.bubble-pop-game .game-header {
+  text-align: center;
+  width: 100%;
+}
+
+.bubble-pop-game .game-header h2 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.target-letter {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+}
+
+.target-label {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.target-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.bubble-game-area {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+  animation: float 3s ease-in-out infinite;
+}
+
+.bubble:hover {
+  transform: scale(1.1);
+}
+
+.bubble-letter {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+/* Memory Match Game */
+.memory-match-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.memory-match-game .game-header {
+  text-align: center;
+  width: 100%;
+}
+
+.memory-match-game .game-header h2 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.game-stats {
+  display: flex;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-base);
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 400px;
+}
+
+.memory-card {
+  position: relative;
+  aspect-ratio: 1;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.memory-card .card-front,
+.memory-card .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-size: 32px;
+  font-weight: 700;
+  transition: transform 0.6s;
+  backface-visibility: hidden;
+}
+
+.memory-card .card-front {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.memory-card .card-back {
+  transform: rotateY(180deg);
+  color: var(--color-primary);
+}
+
+.memory-card.flipped .card-front {
+  transform: rotateY(180deg);
+}
+
+.memory-card.flipped .card-back {
+  transform: rotateY(0deg);
+}
+
+.memory-card.matched {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.memory-card.matched .card-front,
+.memory-card.matched .card-back {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  color: white;
+}
+
+/* Drag and Drop Game */
+.drag-drop-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.drag-drop-game .game-header {
+  text-align: center;
+  width: 100%;
+}
+
+.drag-drop-game .game-header h2 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.drag-drop-target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  width: 100%;
+  max-width: 400px;
+}
+
+.target-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: var(--border-radius-md);
+}
+
+.drop-zone {
+  width: 100%;
+  min-height: 120px;
+  border: 3px dashed var(--color-border);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.02);
+  transition: all 0.3s;
+}
+
+.drop-zone:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.drop-zone.correct {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.2);
+  animation: pulse-correct 0.5s;
+}
+
+.drop-zone.wrong {
+  border-color: #f44336;
+  background-color: rgba(244, 67, 54, 0.2);
+  animation: shake 0.5s;
+}
+
+.drop-placeholder {
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
+}
+
+.drag-items {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.drag-item {
+  font-size: 48px;
+  font-weight: 700;
+  padding: var(--spacing-lg);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  cursor: move;
+  transition: all 0.2s;
+  min-width: 80px;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+.drag-item:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.drag-item.dragging,
+.dragging-clone {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+@keyframes pulse-correct {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Choose Sound Game */
+.choose-sound-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+}
+
+.choose-sound-game .game-header {
+  text-align: center;
+  width: 100%;
+}
+
+.choose-sound-game .game-header h2 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.sound-prompt {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.play-sound-btn-large {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xl);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 120px;
+  height: 120px;
+}
+
+.play-sound-btn-large:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.play-sound-btn-large.playing {
+  animation: pulse-sound 1s infinite;
+}
+
+.sound-icon {
+  font-size: 48px;
+}
+
+.sound-text {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+
+.instruction {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+}
+
+.sound-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 400px;
+}
+
+.sound-option {
+  font-size: 48px;
+  font-weight: 700;
+  padding: var(--spacing-xl);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--color-primary);
+}
+
+.sound-option:hover:not(:disabled) {
+  transform: scale(1.05);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.sound-option.correct-answer {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  color: white;
+}
+
+.sound-option.wrong-answer {
+  background-color: #f44336;
+  border-color: #f44336;
+  color: white;
+}
+
+.sound-option:disabled {
+  cursor: not-allowed;
+}
+
+@keyframes pulse-sound {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* General feedback styles */
+.feedback {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 72px;
+  font-weight: 700;
+  padding: var(--spacing-xl);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  animation: fadeInOut 0.5s;
+}
+
+.feedback.correct {
+  color: #4CAF50;
+}
+
+.feedback.wrong {
+  color: #f44336;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
