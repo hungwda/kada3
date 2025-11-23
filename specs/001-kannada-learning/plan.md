@@ -21,7 +21,7 @@ Frontend uses Preact for a simple UI, Phaser for mini-games, and sql.js + TypeOR
 **Project Type**: web
 **Performance Goals**: TTI ≤ 2s on mid-tier Android (throttled), initial route JS ≤ 100 KB gz, first-load total ≤ 150 KB gz
 **Constraints**: Offline-first; minimal dependencies; simple UX (AA contrast, ≥16px base, 44×44 tap targets); multi-user local profiles
-**Scale/Scope**: MVP: 1 primary journey, 2 mini-games, 1–2 lesson packs; multiple local profiles on device
+**Scale/Scope**: MVP: 1 primary journey, 7 mini-games (match-sound, tap-letter, tracing, bubble-pop, memory-match, drag-drop, choose-sound), 1–2 lesson packs; multiple local profiles on device
 
 ## Constitution Check
 
@@ -85,7 +85,12 @@ src/
 │   └── cache.ts           # Cache Storage helpers
 ├── games/                 # Phaser scenes (lazy entry)
 │   ├── match-sound/
-│   └── tap-letter/
+│   ├── tap-letter/
+│   ├── tracing/           # letter tracing game
+│   ├── bubble-pop/        # pop bubbles with correct letters
+│   ├── memory-match/      # match pairs of letters/sounds
+│   ├── drag-drop/         # drag letters to correct positions
+│   └── choose-sound/      # choose the right sound for a letter
 ├── db/
 │   ├── entities/          # TypeORM entities
 │   └── migrations/        # optional, for local schema evolutions

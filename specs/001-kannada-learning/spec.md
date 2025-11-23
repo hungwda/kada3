@@ -30,8 +30,9 @@ Progress persists locally.
 
 ### User Story 2 - Play Mini-Games to Practice (Priority: P2)
 
-Children reinforce their knowledge using bite-sized games (e.g., match letter to sound, tap the
-correct letter, simple tracing game) that are engaging and quick.
+Children reinforce their knowledge using seven bite-sized games (tracing, bubble pop, memory match,
+drag and drop, choose the right sound, match letter to sound, and tap the correct letter) that are
+engaging and quick.
 
 **Why this priority**: Makes practice fun and increases repetition and retention.
 
@@ -86,8 +87,9 @@ unlock; all visible without network.
 - FR-003: Lessons MUST be bite-sized (target 2–3 minutes to complete) with clear learning outcomes.
 - FR-004: Local progress persistence MUST record lesson completions, scores, badges, and streaks
   without requiring a network connection.
-- FR-005: The practice experience MUST include at least two distinct mini-games reinforcing letter
-  recognition and sound-letter mapping.
+- FR-005: The practice experience MUST include seven distinct mini-games reinforcing letter
+  recognition and sound-letter mapping: tracing, bubble pop, memory match, drag and drop,
+  choose the right sound, match letter to sound, and tap the correct letter.
 - FR-006: The interface MUST be mobile-first with minimal navigation depth (≤ 2 levels) and primary
   action reachable within two taps from home.
 - FR-007: Accessibility MUST meet AA contrast; base font size ≥ 16px; tap targets ≥ 44×44 px.
