@@ -3,7 +3,10 @@
  */
 
 import type { Database } from 'sql.js';
-import initSqlJs from 'sql.js';
+import * as initSqlJsModule from 'sql.js';
+
+// sql.js exports initSqlJs as both default and named export
+const initSqlJs = (initSqlJsModule as any).default || initSqlJsModule;
 
 let db: Database | null = null;
 let sqlJs: any = null;

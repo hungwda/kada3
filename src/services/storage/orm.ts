@@ -3,7 +3,7 @@
  */
 
 import { DataSource } from 'typeorm';
-import initSqlJs from 'sql.js';
+import * as initSqlJsModule from 'sql.js';
 import {
   Profile,
   Lesson,
@@ -15,6 +15,9 @@ import {
   Settings,
   Asset
 } from '../../db/entities';
+
+// sql.js exports initSqlJs as both default and named export
+const initSqlJs = (initSqlJsModule as any).default || initSqlJsModule;
 
 let dataSource: DataSource | null = null;
 
