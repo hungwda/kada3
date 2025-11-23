@@ -3,6 +3,10 @@ import preact from '@preact/preset-vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  server: {
+    port: 3000,
+    strictPort: true
+  },
   esbuild: {
     // Enable support for decorators (needed for TypeORM)
     target: 'es2020',
