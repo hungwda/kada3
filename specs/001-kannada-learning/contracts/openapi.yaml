@@ -1,0 +1,382 @@
+openapi: 3.1.0
+info:
+  title: Kannada Learning Local Contracts (Reference)
+  version: 0.1.0
+  description: >
+    Reference REST-style contracts for the offline local data layer used by the Kannada Learning
+    PWA. This is a planning artifact to formalize domain operations; it does NOT imply a remote
+    network API in the MVP. Calls are implemented against a local repository backed by sql.js +
+    TypeORM and persisted to IndexedDB. Paths and schemas define stable boundaries for UI and
+    mini-game modules to interact with the domain layer.
+
+servers: []
+
+tags:
+  - name: Profiles
+  - name: Lessons
+  - name: Activities
+  - name: Progress
+  - name: Rewards
+  - name: Streaks
+  - name: Settings
+
+paths:
+  /profiles:
+    get:
+      tags: [Profiles]
+      summary: List local child profiles
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Profile"
+    post:
+      tags: [Profiles]
+      summary: Create a new local child profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: [name]
+              properties:
+                name:
+                  type: string
+                avatar:
+                  type: string
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+
+  /profiles/{profileId}:
+    parameters:
+      - in: path
+        name: profileId
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      tags: [Profiles]
+      summary: Get a profile
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+        "404": { description: Not Found }
+    patch:
+      tags: [Profiles]
+      summary: Update profile name/avatar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name: { type: string }
+                avatar: { type: string }
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+    delete:
+      tags: [Profiles]
+      summary: Delete a profile and cascade related data
+      responses:
+        "204": { description: No Content }
+
+  /profiles/{profileId}/progress:
+    parameters:
+      - in: path
+        name: profileId
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      tags: [Progress]
+      summary: List progress entries for a profile
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Progress"
+    post:
+      tags: [Progress]
+      summary: Record a completion attempt for a lesson
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: [lessonId, score, stars, timeTakenSec]
+              properties:
+                lessonId: { type: string, format: uuid }
+                score: { type: integer, minimum: 0, maximum: 100 }
+                stars: { type: integer, minimum: 0, maximum: 3 }
+                timeTakenSec: { type: integer, minimum: 0 }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Progress"
+
+  /lessons:
+    get:
+      tags: [Lessons]
+      summary: List lessons (optionally filter by type)
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [letter, intro, pronunciation]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lesson"
+
+  /lessons/{lessonId}:
+    parameters:
+      - in: path
+        name: lessonId
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      tags: [Lessons]
+      summary: Get a lesson by id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lesson"
+        "404": { description: Not Found }
+
+  /activities:
+    get:
+      tags: [Activities]
+      summary: List activities for a lesson
+      parameters:
+        - in: query
+          name: lessonId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Activity"
+
+  /rewards:
+    get:
+      tags: [Rewards]
+      summary: List available badges
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Badge"
+
+  /profiles/{profileId}/earned-badges:
+    parameters:
+      - in: path
+        name: profileId
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      tags: [Rewards]
+      summary: List badges earned by a profile
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EarnedBadge"
+
+  /streaks/{profileId}:
+    parameters:
+      - in: path
+        name: profileId
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      tags: [Streaks]
+      summary: Get streak summary for a profile
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Streak"
+
+  /settings:
+    get:
+      tags: [Settings]
+      summary: Read local settings
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
+    patch:
+      tags: [Settings]
+      summary: Update local settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                languagePref:
+                  type: string
+                  enum: [kn, kn_en_helpers]
+                audioOn: { type: boolean }
+                hapticsOn: { type: boolean }
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
+
+components:
+  schemas:
+    Profile:
+      type: object
+      required: [id, name, createdAt]
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string, minLength: 1, maxLength: 24 }
+        avatar: { type: string, nullable: true }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time, nullable: true }
+        lastActiveAt: { type: string, format: date-time, nullable: true }
+
+    Lesson:
+      type: object
+      required: [id, code, title, type, order]
+      properties:
+        id: { type: string, format: uuid }
+        code: { type: string }
+        title: { type: string }
+        type:
+          type: string
+          enum: [letter, intro, pronunciation]
+        order: { type: integer, minimum: 0 }
+        durationMin: { type: integer, minimum: 1, maximum: 5, default: 2 }
+        assets:
+          type: object
+          additionalProperties: true
+          description: Arbitrary asset references (audio/image keys)
+        enabled: { type: boolean, default: true }
+
+    Activity:
+      type: object
+      required: [id, lessonId, type, order]
+      properties:
+        id: { type: string, format: uuid }
+        lessonId: { type: string, format: uuid }
+        type:
+          type: string
+          enum: [trace, match_sound, tap_letter, quiz]
+        promptRef: { type: string, nullable: true }
+        target:
+          type: object
+          additionalProperties: true
+        difficulty: { type: integer, minimum: 1, maximum: 3, default: 1 }
+        maxScore: { type: integer, default: 100 }
+        order: { type: integer, minimum: 0 }
+
+    Progress:
+      type: object
+      required: [id, profileId, lessonId, completedAt, score, stars]
+      properties:
+        id: { type: string, format: uuid }
+        profileId: { type: string, format: uuid }
+        lessonId: { type: string, format: uuid }
+        completedAt: { type: string, format: date-time }
+        attempts: { type: integer, minimum: 1, default: 1 }
+        score: { type: integer, minimum: 0, maximum: 100 }
+        bestScore: { type: integer, minimum: 0, maximum: 100, nullable: true }
+        stars: { type: integer, minimum: 0, maximum: 3 }
+        timeTakenSec: { type: integer, minimum: 0 }
+
+    Badge:
+      type: object
+      required: [id, code, name]
+      properties:
+        id: { type: string, format: uuid }
+        code: { type: string }
+        name: { type: string }
+        description: { type: string }
+        rule:
+          type: object
+          additionalProperties: true
+        icon: { type: string, nullable: true }
+
+    EarnedBadge:
+      type: object
+      required: [id, profileId, badgeId, earnedAt]
+      properties:
+        id: { type: string, format: uuid }
+        profileId: { type: string, format: uuid }
+        badgeId: { type: string, format: uuid }
+        earnedAt: { type: string, format: date-time }
+
+    Streak:
+      type: object
+      required: [profileId, currentCount, longestCount]
+      properties:
+        profileId: { type: string, format: uuid }
+        currentCount: { type: integer, minimum: 0 }
+        longestCount: { type: integer, minimum: 0 }
+        lastActiveDate: { type: string, format: date, nullable: true }
+
+    Settings:
+      type: object
+      required: [languagePref, audioOn, hapticsOn]
+      properties:
+        languagePref:
+          type: string
+          enum: [kn, kn_en_helpers]
+          default: kn_en_helpers
+        audioOn: { type: boolean, default: true }
+        hapticsOn: { type: boolean, default: true }
