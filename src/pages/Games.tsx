@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from 'preact/hooks';
 import { MatchSoundGame } from '../games/match-sound';
 import { TapLetterGame } from '../games/tap-letter';
+import { LetterTracingGame } from '../games/letter-tracing';
+import { BubblePopGame } from '../games/bubble-pop';
+import { MemoryMatchGame } from '../games/memory-match';
+import { DragDropGame } from '../games/drag-drop';
+import { ChooseSoundGame } from '../games/choose-sound';
 import { getCachedAsset } from '../services/cache';
 import { getRepository } from '../services/storage/orm';
 import { Progress } from '../db/entities';
@@ -9,7 +14,7 @@ interface GamesProps {
   onNavigate: (page: 'home' | 'lessons' | 'games' | 'profiles') => void;
 }
 
-type GameType = 'match-sound' | 'tap-letter' | null;
+type GameType = 'match-sound' | 'tap-letter' | 'letter-tracing' | 'bubble-pop' | 'memory-match' | 'drag-drop' | 'choose-sound' | null;
 
 interface GameScore {
   game: string;
@@ -22,7 +27,7 @@ export function Games({ onNavigate }: GamesProps) {
   const [currentGame, setCurrentGame] = useState<GameType>(null);
   const [gameScores, setGameScores] = useState<Map<string, GameScore>>(new Map());
   const gameContainerRef = useRef<HTMLDivElement>(null);
-  const gameInstanceRef = useRef<MatchSoundGame | TapLetterGame | null>(null);
+  const gameInstanceRef = useRef<MatchSoundGame | TapLetterGame | LetterTracingGame | BubblePopGame | MemoryMatchGame | DragDropGame | ChooseSoundGame | null>(null);
 
   useEffect(() => {
     loadGameScores();
@@ -50,7 +55,7 @@ export function Games({ onNavigate }: GamesProps) {
       const scores = new Map<string, GameScore>();
 
       // Load scores for each game type
-      for (const game of ['match-sound', 'tap-letter']) {
+      for (const game of ['match-sound', 'tap-letter', 'letter-tracing', 'bubble-pop', 'memory-match', 'drag-drop', 'choose-sound']) {
         const gameProgress = await progressRepo
           .createQueryBuilder('progress')
           .where('progress.profileId = :profileId', { profileId: currentProfileId })
@@ -105,6 +110,57 @@ export function Games({ onNavigate }: GamesProps) {
         });
         gameInstanceRef.current = game;
         game.mount(gameContainerRef.current);
+      } else if (gameType === 'letter-tracing') {
+        const game = new LetterTracingGame({
+          letters: letters.map((l: any) => ({
+            letter: l.assets.letter,
+            pronunciation: l.assets.pronunciation
+          })),
+          onComplete: (score, stars) => handleGameComplete('letter-tracing', score, stars)
+        });
+        gameInstanceRef.current = game;
+        game.mount(gameContainerRef.current);
+      } else if (gameType === 'bubble-pop') {
+        const game = new BubblePopGame({
+          letters: letters.map((l: any) => ({
+            letter: l.assets.letter,
+            pronunciation: l.assets.pronunciation
+          })),
+          onComplete: (score, stars) => handleGameComplete('bubble-pop', score, stars)
+        });
+        gameInstanceRef.current = game;
+        game.mount(gameContainerRef.current);
+      } else if (gameType === 'memory-match') {
+        const game = new MemoryMatchGame({
+          letters: letters.map((l: any) => ({
+            letter: l.assets.letter,
+            pronunciation: l.assets.pronunciation
+          })),
+          onComplete: (score, stars) => handleGameComplete('memory-match', score, stars)
+        });
+        gameInstanceRef.current = game;
+        game.mount(gameContainerRef.current);
+      } else if (gameType === 'drag-drop') {
+        const game = new DragDropGame({
+          letters: letters.map((l: any) => ({
+            letter: l.assets.letter,
+            pronunciation: l.assets.pronunciation,
+            image: l.assets.image
+          })),
+          onComplete: (score, stars) => handleGameComplete('drag-drop', score, stars)
+        });
+        gameInstanceRef.current = game;
+        game.mount(gameContainerRef.current);
+      } else if (gameType === 'choose-sound') {
+        const game = new ChooseSoundGame({
+          letters: letters.map((l: any) => ({
+            letter: l.assets.letter,
+            pronunciation: l.assets.pronunciation
+          })),
+          onComplete: (score, stars) => handleGameComplete('choose-sound', score, stars)
+        });
+        gameInstanceRef.current = game;
+        game.mount(gameContainerRef.current);
       }
     } catch (error) {
       console.error('Failed to start game:', error);
@@ -153,13 +209,23 @@ export function Games({ onNavigate }: GamesProps) {
 
   // Game view
   if (currentGame) {
+    const gameTitles: Record<string, string> = {
+      'match-sound': 'Match the Sound',
+      'tap-letter': 'Tap the Letter',
+      'letter-tracing': 'Letter Tracing',
+      'bubble-pop': 'Bubble Pop',
+      'memory-match': 'Memory Match',
+      'drag-drop': 'Drag & Drop',
+      'choose-sound': 'Choose the Right Sound'
+    };
+
     return (
       <div class="games-page">
         <header class="page-header">
           <button class="back-button" onClick={() => setCurrentGame(null)}>
             ← Back to Games
           </button>
-          <h1>{currentGame === 'match-sound' ? 'Match the Sound' : 'Tap the Letter'}</h1>
+          <h1>{gameTitles[currentGame]}</h1>
         </header>
         <div ref={gameContainerRef} class="game-container"></div>
       </div>
@@ -199,6 +265,71 @@ export function Games({ onNavigate }: GamesProps) {
             </p>
           )}
           <button class="play-button action-button primary" onClick={() => setCurrentGame('tap-letter')}>
+            Play Now
+          </button>
+        </div>
+
+        <div class="game-card">
+          <h2>✏️ Letter Tracing</h2>
+          <p>Trace the letters with your finger</p>
+          {gameScores.has('letter-tracing') && (
+            <p class="game-stats">
+              Last: {gameScores.get('letter-tracing')?.lastScore} | {gameScores.get('letter-tracing')?.lastStars} ⭐
+            </p>
+          )}
+          <button class="play-button action-button primary" onClick={() => setCurrentGame('letter-tracing')}>
+            Play Now
+          </button>
+        </div>
+
+        <div class="game-card">
+          <h2>🫧 Bubble Pop</h2>
+          <p>Pop the correct letter bubble</p>
+          {gameScores.has('bubble-pop') && (
+            <p class="game-stats">
+              Last: {gameScores.get('bubble-pop')?.lastScore} | {gameScores.get('bubble-pop')?.lastStars} ⭐
+            </p>
+          )}
+          <button class="play-button action-button primary" onClick={() => setCurrentGame('bubble-pop')}>
+            Play Now
+          </button>
+        </div>
+
+        <div class="game-card">
+          <h2>🧠 Memory Match</h2>
+          <p>Find matching pairs of letters</p>
+          {gameScores.has('memory-match') && (
+            <p class="game-stats">
+              Last: {gameScores.get('memory-match')?.lastScore} | {gameScores.get('memory-match')?.lastStars} ⭐
+            </p>
+          )}
+          <button class="play-button action-button primary" onClick={() => setCurrentGame('memory-match')}>
+            Play Now
+          </button>
+        </div>
+
+        <div class="game-card">
+          <h2>🎯 Drag & Drop</h2>
+          <p>Drag the letter to the correct spot</p>
+          {gameScores.has('drag-drop') && (
+            <p class="game-stats">
+              Last: {gameScores.get('drag-drop')?.lastScore} | {gameScores.get('drag-drop')?.lastStars} ⭐
+            </p>
+          )}
+          <button class="play-button action-button primary" onClick={() => setCurrentGame('drag-drop')}>
+            Play Now
+          </button>
+        </div>
+
+        <div class="game-card">
+          <h2>🔊 Choose the Right Sound</h2>
+          <p>Listen and choose the correct letter</p>
+          {gameScores.has('choose-sound') && (
+            <p class="game-stats">
+              Last: {gameScores.get('choose-sound')?.lastScore} | {gameScores.get('choose-sound')?.lastStars} ⭐
+            </p>
+          )}
+          <button class="play-button action-button primary" onClick={() => setCurrentGame('choose-sound')}>
             Play Now
           </button>
         </div>
