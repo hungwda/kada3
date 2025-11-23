@@ -3,6 +3,7 @@
  */
 
 import { DataSource } from 'typeorm';
+import initSqlJs from 'sql.js';
 import {
   Profile,
   Lesson,
@@ -47,9 +48,11 @@ export async function getDataSource(): Promise<DataSource> {
     dataSource = new DataSource({
       type: 'sqljs',
       database: savedData,
+      driver: initSqlJs,
       sqlJsConfig: {
         locateFile: (file: string) => `/sql-wasm/${file}`
       },
+      autoSave: false,
       synchronize: true, // Auto-create tables in development
       logging: false,
       entities: [Profile, Lesson, Activity, Progress, Streak, Badge, EarnedBadge, Settings, Asset]
