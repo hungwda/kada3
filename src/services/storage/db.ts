@@ -3,10 +3,8 @@
  */
 
 import type { Database } from 'sql.js';
-import * as initSqlJsModule from 'sql.js';
-
-// sql.js exports initSqlJs as both default and named export
-const initSqlJs = (initSqlJsModule as any).default || initSqlJsModule;
+// Import sql.js using dynamic import for better browser compatibility
+let initSqlJs: any = null;
 
 let db: Database | null = null;
 let sqlJs: any = null;
@@ -22,6 +20,12 @@ export async function initDatabase(): Promise<Database> {
   try {
     // Load sql.js WASM
     if (!sqlJs) {
+      // Dynamically import sql.js
+      if (!initSqlJs) {
+        const module = await import('sql.js');
+        initSqlJs = (module as any).default || module;
+      }
+
       sqlJs = await initSqlJs({
         locateFile: (file: string) => {
           // WASM files are copied to public/sql-wasm directory

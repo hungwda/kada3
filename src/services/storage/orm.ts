@@ -3,7 +3,6 @@
  */
 
 import { DataSource } from 'typeorm';
-import * as initSqlJsModule from 'sql.js';
 import {
   Profile,
   Lesson,
@@ -15,9 +14,6 @@ import {
   Settings,
   Asset
 } from '../../db/entities';
-
-// sql.js exports initSqlJs as both default and named export
-const initSqlJs = (initSqlJsModule as any).default || initSqlJsModule;
 
 let dataSource: DataSource | null = null;
 
@@ -44,6 +40,10 @@ export async function getDataSource(): Promise<DataSource> {
   }
 
   try {
+    // Dynamically import sql.js
+    const sqlJsModule = await import('sql.js');
+    const initSqlJs = (sqlJsModule as any).default || sqlJsModule;
+
     // Load saved database if available
     const savedData = await loadDatabaseFromIndexedDB();
 
