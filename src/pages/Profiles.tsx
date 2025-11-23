@@ -123,7 +123,7 @@ export function Profiles({ onNavigate }: ProfilesProps) {
       )}
 
       <section class="profiles-list">
-        {profiles.length === 0 ? (
+        {!profiles || profiles.length === 0 ? (
           <p class="placeholder-text">No profiles yet</p>
         ) : (
           <div class="profiles-grid">
