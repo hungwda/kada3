@@ -82,6 +82,10 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    exclude: ['sql.js']
+    exclude: ['sql.js'],
+    include: []
+  },
+  ssr: {
+    noExternal: []
   }
 });

@@ -2,7 +2,7 @@
  * sql.js database lifecycle management
  */
 
-import initSqlJs, { Database } from 'sql.js';
+import type { Database } from 'sql.js';
 
 let db: Database | null = null;
 let sqlJs: any = null;
@@ -16,8 +16,9 @@ export async function initDatabase(): Promise<Database> {
   }
 
   try {
-    // Load sql.js WASM
+    // Load sql.js WASM using dynamic import
     if (!sqlJs) {
+      const initSqlJs = (await import('sql.js')).default;
       sqlJs = await initSqlJs({
         locateFile: (file: string) => {
           // WASM files are copied to public/sql-wasm directory
