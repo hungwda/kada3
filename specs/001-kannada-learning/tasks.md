@@ -99,12 +99,12 @@ description: "Task list for Kannada Learning PWA (Preact + Phaser + sql.js/TypeO
 
 ### Implementation for User Story 2
 
-- [ ] T037 [P] [US2] Implement Phaser wrapper page and lazy-load engine (src/pages/Games.tsx)
-- [ ] T038 [P] [US2] Implement match-sound scene using letter assets (src/games/match-sound/index.ts)
-- [ ] T039 [P] [US2] Implement tap-letter scene (tap correct letter from grid) (src/games/tap-letter/index.ts)
-- [ ] T040 [US2] Wire scenes to read lesson assets and audio offline (src/services/cache.ts)
-- [ ] T041 [US2] Record game results (score, stars, time) to Progress (src/services/storage/orm.ts)
-- [ ] T042 [US2] Show last score/stars in Games entry UI (src/pages/Games.tsx)
+- [X] T037 [P] [US2] Implement Phaser wrapper page and lazy-load engine (src/pages/Games.tsx)
+- [X] T038 [P] [US2] Implement match-sound scene using letter assets (src/games/match-sound/index.ts)
+- [X] T039 [P] [US2] Implement tap-letter scene (tap correct letter from grid) (src/games/tap-letter/index.ts)
+- [X] T040 [US2] Wire scenes to read lesson assets and audio offline (src/services/cache.ts)
+- [X] T041 [US2] Record game results (score, stars, time) to Progress (src/services/storage/orm.ts)
+- [X] T042 [US2] Show last score/stars in Games entry UI (src/pages/Games.tsx)
 
 **Checkpoint**: User Stories 1 AND 2 should both work independently offline
 
@@ -118,11 +118,11 @@ description: "Task list for Kannada Learning PWA (Preact + Phaser + sql.js/TypeO
 
 ### Implementation for User Story 3
 
-- [ ] T043 [P] [US3] Implement streak model updates and daily increment logic (src/services/storage/orm.ts)
-- [ ] T044 [P] [US3] Implement rewards evaluation (lessons completed badge rule) (src/services/storage/orm.ts)
-- [ ] T045 [US3] Build rewards/badges UI component (src/components/ProgressBadge.tsx)
-- [ ] T046 [US3] Show current streak and longest streak on Home (src/pages/Home.tsx)
-- [ ] T047 [US3] Display earned badges and progress toward next on Rewards view (src/pages/Lessons.tsx)
+- [X] T043 [P] [US3] Implement streak model updates and daily increment logic (src/services/storage/orm.ts)
+- [X] T044 [P] [US3] Implement rewards evaluation (lessons completed badge rule) (src/services/storage/orm.ts)
+- [X] T045 [US3] Build rewards/badges UI component (src/components/ProgressBadge.tsx)
+- [X] T046 [US3] Show current streak and longest streak on Home (src/pages/Home.tsx)
+- [X] T047 [US3] Display earned badges and progress toward next on Rewards view (src/pages/Lessons.tsx)
 
 **Checkpoint**: All user stories independently functional; rewards encourage engagement
 
@@ -132,12 +132,12 @@ description: "Task list for Kannada Learning PWA (Preact + Phaser + sql.js/TypeO
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T048 [P] Documentation updates linked from quickstart (docs/ or specs/001-kannada-learning/quickstart.md)
-- [ ] T049 Code cleanup and refactoring per clean code principle (src/**)
-- [ ] T050 Performance optimization and budgets verification (Lighthouse report attached in docs/perf/) (docs/perf/README.md)
-- [ ] T051 [P] Additional unit or e2e tests if requested (tests/)
-- [ ] T052 Security/Privacy hardening for under-13 audience (no analytics, content checks) (docs/privacy.md)
-- [ ] T053 Validate offline install and A2HS experience end-to-end (no file change)
+- [X] T048 [P] Documentation updates linked from quickstart (docs/ or specs/001-kannada-learning/quickstart.md)
+- [X] T049 Code cleanup and refactoring per clean code principle (src/**)
+- [X] T050 Performance optimization and budgets verification (Lighthouse report attached in docs/perf/) (docs/perf/README.md)
+- [X] T051 [P] Additional unit or e2e tests if requested (tests/)
+- [X] T052 Security/Privacy hardening for under-13 audience (no analytics, content checks) (docs/privacy.md)
+- [X] T053 Validate offline install and A2HS experience end-to-end (no file change)
 
 ---
 
