@@ -1,0 +1,344 @@
+{
+  "version": "1.0.0",
+  "name": "Kannada Letters - Vowels and Consonants",
+  "description": "Basic Kannada alphabet learning pack with vowels (ಸ್ವರಗಳು) and consonants (ವ್ಯಂಜನಗಳು)",
+  "lessons": [
+    {
+      "id": "lesson-vowel-a",
+      "code": "KA_001",
+      "title": "ಅ (a)",
+      "type": "letter",
+      "order": 1,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಅ",
+        "pronunciation": "/data/audio/vowels/a.mp3",
+        "image": "/data/images/vowels/a.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-vowel-aa",
+      "code": "KA_002",
+      "title": "ಆ (ā)",
+      "type": "letter",
+      "order": 2,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಆ",
+        "pronunciation": "/data/audio/vowels/aa.mp3",
+        "image": "/data/images/vowels/aa.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-vowel-i",
+      "code": "KA_003",
+      "title": "ಇ (i)",
+      "type": "letter",
+      "order": 3,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಇ",
+        "pronunciation": "/data/audio/vowels/i.mp3",
+        "image": "/data/images/vowels/i.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-vowel-ii",
+      "code": "KA_004",
+      "title": "ಈ (ī)",
+      "type": "letter",
+      "order": 4,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಈ",
+        "pronunciation": "/data/audio/vowels/ii.mp3",
+        "image": "/data/images/vowels/ii.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-vowel-u",
+      "code": "KA_005",
+      "title": "ಉ (u)",
+      "type": "letter",
+      "order": 5,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಉ",
+        "pronunciation": "/data/audio/vowels/u.mp3",
+        "image": "/data/images/vowels/u.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-ka",
+      "code": "KA_010",
+      "title": "ಕ (ka)",
+      "type": "letter",
+      "order": 10,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಕ",
+        "pronunciation": "/data/audio/consonants/ka.mp3",
+        "image": "/data/images/consonants/ka.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-kha",
+      "code": "KA_011",
+      "title": "ಖ (kha)",
+      "type": "letter",
+      "order": 11,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಖ",
+        "pronunciation": "/data/audio/consonants/kha.mp3",
+        "image": "/data/images/consonants/kha.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-ga",
+      "code": "KA_012",
+      "title": "ಗ (ga)",
+      "type": "letter",
+      "order": 12,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಗ",
+        "pronunciation": "/data/audio/consonants/ga.mp3",
+        "image": "/data/images/consonants/ga.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-gha",
+      "code": "KA_013",
+      "title": "ಘ (gha)",
+      "type": "letter",
+      "order": 13,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಘ",
+        "pronunciation": "/data/audio/consonants/gha.mp3",
+        "image": "/data/images/consonants/gha.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-nga",
+      "code": "KA_014",
+      "title": "ಙ (ṅa)",
+      "type": "letter",
+      "order": 14,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಙ",
+        "pronunciation": "/data/audio/consonants/nga.mp3",
+        "image": "/data/images/consonants/nga.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-cha",
+      "code": "KA_015",
+      "title": "ಚ (ca)",
+      "type": "letter",
+      "order": 15,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಚ",
+        "pronunciation": "/data/audio/consonants/cha.mp3",
+        "image": "/data/images/consonants/cha.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-ta",
+      "code": "KA_016",
+      "title": "ತ (ta)",
+      "type": "letter",
+      "order": 16,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ತ",
+        "pronunciation": "/data/audio/consonants/ta.mp3",
+        "image": "/data/images/consonants/ta.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-na",
+      "code": "KA_017",
+      "title": "ನ (na)",
+      "type": "letter",
+      "order": 17,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ನ",
+        "pronunciation": "/data/audio/consonants/na.mp3",
+        "image": "/data/images/consonants/na.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-pa",
+      "code": "KA_018",
+      "title": "ಪ (pa)",
+      "type": "letter",
+      "order": 18,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಪ",
+        "pronunciation": "/data/audio/consonants/pa.mp3",
+        "image": "/data/images/consonants/pa.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-ma",
+      "code": "KA_019",
+      "title": "ಮ (ma)",
+      "type": "letter",
+      "order": 19,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಮ",
+        "pronunciation": "/data/audio/consonants/ma.mp3",
+        "image": "/data/images/consonants/ma.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-ya",
+      "code": "KA_020",
+      "title": "ಯ (ya)",
+      "type": "letter",
+      "order": 20,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಯ",
+        "pronunciation": "/data/audio/consonants/ya.mp3",
+        "image": "/data/images/consonants/ya.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-ra",
+      "code": "KA_021",
+      "title": "ರ (ra)",
+      "type": "letter",
+      "order": 21,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ರ",
+        "pronunciation": "/data/audio/consonants/ra.mp3",
+        "image": "/data/images/consonants/ra.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-la",
+      "code": "KA_022",
+      "title": "ಲ (la)",
+      "type": "letter",
+      "order": 22,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಲ",
+        "pronunciation": "/data/audio/consonants/la.mp3",
+        "image": "/data/images/consonants/la.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-va",
+      "code": "KA_023",
+      "title": "ವ (va)",
+      "type": "letter",
+      "order": 23,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ವ",
+        "pronunciation": "/data/audio/consonants/va.mp3",
+        "image": "/data/images/consonants/va.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-sha",
+      "code": "KA_024",
+      "title": "ಶ (śa)",
+      "type": "letter",
+      "order": 24,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಶ",
+        "pronunciation": "/data/audio/consonants/sha.mp3",
+        "image": "/data/images/consonants/sha.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-sa",
+      "code": "KA_025",
+      "title": "ಸ (sa)",
+      "type": "letter",
+      "order": 25,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಸ",
+        "pronunciation": "/data/audio/consonants/sa.mp3",
+        "image": "/data/images/consonants/sa.png"
+      },
+      "enabled": true
+    },
+    {
+      "id": "lesson-consonant-ha",
+      "code": "KA_026",
+      "title": "ಹ (ha)",
+      "type": "letter",
+      "order": 26,
+      "durationMin": 2,
+      "assets": {
+        "letter": "ಹ",
+        "pronunciation": "/data/audio/consonants/ha.mp3",
+        "image": "/data/images/consonants/ha.png"
+      },
+      "enabled": true
+    }
+  ],
+  "activities": [
+    {
+      "id": "activity-match-sound-vowels",
+      "lessonId": "lesson-vowel-a",
+      "type": "match_sound",
+      "promptRef": "Listen and tap the correct letter",
+      "target": {
+        "correctLetter": "ಅ",
+        "options": ["ಅ", "ಆ", "ಇ", "ಈ"]
+      },
+      "difficulty": 1,
+      "maxScore": 100,
+      "order": 1
+    },
+    {
+      "id": "activity-tap-letter-ka",
+      "lessonId": "lesson-consonant-ka",
+      "type": "tap_letter",
+      "promptRef": "Tap the letter ಕ",
+      "target": {
+        "correctLetter": "ಕ",
+        "gridSize": 4,
+        "options": ["ಕ", "ಖ", "ಗ", "ಘ", "ಙ", "ಚ", "ತ", "ನ", "ಪ", "ಮ", "ಯ", "ರ", "ಲ", "ವ", "ಶ", "ಸ"]
+      },
+      "difficulty": 1,
+      "maxScore": 100,
+      "order": 1
+    }
+  ]
+}

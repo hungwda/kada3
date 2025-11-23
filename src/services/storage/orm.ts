@@ -1,0 +1,68 @@
+/**
+ * TypeORM datasource and repository management
+ */
+
+import { DataSource } from 'typeorm';
+import { getDatabase, initDatabase } from './db';
+import {
+  Profile,
+  Lesson,
+  Activity,
+  Progress,
+  Streak,
+  Badge,
+  EarnedBadge,
+  Settings,
+  Asset
+} from '../../db/entities';
+
+let dataSource: DataSource | null = null;
+
+/**
+ * Initialize TypeORM DataSource (lazy)
+ */
+export async function getDataSource(): Promise<DataSource> {
+  if (dataSource && dataSource.isInitialized) {
+    return dataSource;
+  }
+
+  try {
+    // Ensure sql.js database is initialized
+    const db = await initDatabase();
+
+    // Create TypeORM DataSource
+    dataSource = new DataSource({
+      type: 'sqljs',
+      database: db,
+      synchronize: true, // Auto-create tables in development
+      logging: false,
+      entities: [Profile, Lesson, Activity, Progress, Streak, Badge, EarnedBadge, Settings, Asset]
+    });
+
+    await dataSource.initialize();
+    console.log('TypeORM DataSource initialized');
+
+    return dataSource;
+  } catch (error) {
+    console.error('Failed to initialize DataSource:', error);
+    throw error;
+  }
+}
+
+/**
+ * Get repository for an entity
+ */
+export async function getRepository<T>(entity: new () => T) {
+  const ds = await getDataSource();
+  return ds.getRepository(entity);
+}
+
+/**
+ * Close DataSource
+ */
+export async function closeDataSource(): Promise<void> {
+  if (dataSource && dataSource.isInitialized) {
+    await dataSource.destroy();
+    dataSource = null;
+  }
+}
