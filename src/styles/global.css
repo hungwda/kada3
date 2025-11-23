@@ -1066,3 +1066,217 @@ p {
   50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
+
+/* Profile Management Styles */
+.error-message {
+  padding: var(--spacing-md);
+  background-color: #fee;
+  border: 1px solid var(--color-error);
+  border-radius: var(--border-radius-md);
+  color: var(--color-error);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  width: 100%;
+  margin-bottom: var(--spacing-xl);
+}
+
+.profile-card {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.profile-card.active {
+  border-color: var(--color-primary);
+  background-color: #fff5f0;
+}
+
+.profile-avatar {
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+}
+
+.profile-name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  word-break: break-word;
+}
+
+.active-badge {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background-color: var(--color-primary);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.profile-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  width: 100%;
+}
+
+.btn-switch,
+.btn-delete {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: var(--tap-target-min);
+}
+
+.btn-switch {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.btn-switch:hover,
+.btn-switch:focus {
+  background-color: #3db9b0;
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.btn-delete {
+  background-color: #f5f5f5;
+  color: var(--color-error);
+}
+
+.btn-delete:hover,
+.btn-delete:focus {
+  background-color: var(--color-error);
+  color: white;
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+}
+
+.add-profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.add-profile-form {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.add-profile-form h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-primary);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-group input {
+  width: 100%;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-base);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-family: inherit;
+  min-height: var(--tap-target-min);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+}
+
+.avatar-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.avatar-option {
+  aspect-ratio: 1;
+  min-height: var(--tap-target-min);
+  font-size: 32px;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-option:hover,
+.avatar-option:focus {
+  transform: scale(1.1);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.avatar-option.selected {
+  border-color: var(--color-primary);
+  background-color: #fff5f0;
+  transform: scale(1.1);
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.form-actions button {
+  flex: 1;
+}
