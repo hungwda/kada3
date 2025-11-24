@@ -3,6 +3,8 @@
  */
 
 import type { Database } from 'sql.js';
+// Import sql.js using dynamic import for better browser compatibility
+let initSqlJs: any = null;
 
 let db: Database | null = null;
 let sqlJs: any = null;
@@ -16,9 +18,14 @@ export async function initDatabase(): Promise<Database> {
   }
 
   try {
-    // Load sql.js WASM using dynamic import
+    // Load sql.js WASM
     if (!sqlJs) {
-      const initSqlJs = (await import('sql.js')).default;
+      // Dynamically import sql.js
+      if (!initSqlJs) {
+        const module = await import('sql.js');
+        initSqlJs = (module as any).default || module;
+      }
+
       sqlJs = await initSqlJs({
         locateFile: (file: string) => {
           // WASM files are copied to public/sql-wasm directory
@@ -35,6 +42,10 @@ export async function initDatabase(): Promise<Database> {
     } else {
       db = new sqlJs.Database();
       console.log('New database created');
+    }
+
+    if (!db) {
+      throw new Error('Failed to create database');
     }
 
     return db;

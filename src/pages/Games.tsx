@@ -8,7 +8,7 @@ import { DragDropGame } from '../games/drag-drop';
 import { ChooseSoundGame } from '../games/choose-sound';
 import { getCachedAsset } from '../services/cache';
 import { getRepository } from '../services/storage/orm';
-import { Progress } from '../db/entities';
+import { Progress, Lesson, LessonType } from '../db/entities';
 
 interface GamesProps {
   onNavigate: (page: 'home' | 'lessons' | 'games' | 'profiles') => void;
@@ -59,7 +59,7 @@ export function Games({ onNavigate }: GamesProps) {
         const gameProgress = await progressRepo
           .createQueryBuilder('progress')
           .where('progress.profileId = :profileId', { profileId: currentProfileId })
-          .andWhere('progress.lessonId LIKE :gamePrefix', { gamePrefix: `game-${game}%` })
+          .andWhere('progress.lessonId = :lessonId', { lessonId: `game-${game}` })
           .orderBy('progress.completedAt', 'DESC')
           .getMany();
 
@@ -177,13 +177,43 @@ export function Games({ onNavigate }: GamesProps) {
         return;
       }
 
+      const lessonRepo = await getRepository(Lesson);
       const progressRepo = await getRepository(Progress);
+
+      // Ensure a Lesson record exists for this game
+      const lessonId = `game-${gameType}`;
+      let lesson = await lessonRepo.findOne({ where: { id: lessonId } });
+
+      if (!lesson) {
+        // Create a Lesson record for this game
+        const gameTitles: Record<string, string> = {
+          'match-sound': 'Match the Sound',
+          'tap-letter': 'Tap the Letter',
+          'letter-tracing': 'Letter Tracing',
+          'bubble-pop': 'Bubble Pop',
+          'memory-match': 'Memory Match',
+          'drag-drop': 'Drag & Drop',
+          'choose-sound': 'Choose the Right Sound'
+        };
+
+        lesson = lessonRepo.create({
+          id: lessonId,
+          code: lessonId,
+          title: gameTitles[gameType] || gameType,
+          type: LessonType.INTRO,
+          order: 1000, // High order number to keep games separate from regular lessons
+          durationMin: 5,
+          enabled: true
+        });
+
+        await lessonRepo.save(lesson);
+      }
 
       // Record game result
       const gameProgress = progressRepo.create({
         id: crypto.randomUUID(),
         profileId: currentProfileId,
-        lessonId: `game-${gameType}-${Date.now()}`,
+        lessonId: lessonId,
         completedAt: new Date(),
         attempts: 1,
         score,
